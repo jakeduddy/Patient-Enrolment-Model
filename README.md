@@ -6,7 +6,7 @@ The approach of this project is to use a tree diagram as a data structure to sim
 In this version of the model a node level was added for interation number for Monte Carlo simulations; triangular distribution was used to supply site start up times and enrolment rate. To get a monte carlo simulation we can just add a new parent node, 1 for each iteration.
 
 There is a need to also have actual site and patient information flow into the model. I’ve setup the model to generate existing sites and patients, and then simulate remaining sites. To achieve this, I added another node level for configurations. Configurations give information regarding which countries, site and patients to be added, their enrolment rate, start-up times etc. In the next diagram I have two configurations one “projection_test” and one for “reprojection_test”. In the first I’ve not specified any sites or patients, and in the second I’ve added some sites and patients. 
-'''
+```
 model
 ├── 0
 │   ├── projection_test         [0] #enrolment_offset
@@ -48,5 +48,5 @@ model
             │   └── Paul Smith  ['25-07-2020', None, None]
             ├── 102             [0.1, 42]
             └── 1               [0.182, 40]
- '''
+```
 Once the model is generated, we apply a timestep to screen patients over time until we have reached the specified number of patients or reach a max timestep limit. We can take the dates and determine show a histogram, violin plot etc to show the spread and statistics of the outcomes. 
